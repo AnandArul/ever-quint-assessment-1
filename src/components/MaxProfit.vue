@@ -61,9 +61,12 @@ const findProfit = () => {
     }
     for (let item of buildings) {
       if (remaining >= item.time) {
+        const opTime = remaining - item.time
+        const profit = opTime * item.profit
+
         counts[item.type]++
 
-        findSolution(remaining - item.time, counts, current + item.profit)
+        findSolution(remaining - item.time, counts, current + profit)
 
         counts[item.type]--
       }
